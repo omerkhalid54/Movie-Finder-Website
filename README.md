@@ -1,17 +1,16 @@
-# 🎬 Movie Finder App
-# GROUP PROJECT FOR ICT LAB
-# GROUP MEMBERS
-1).OMER KHALID
-2).FARHAN AMJAD
-3).MIAN SHAYAN YASIR
+Movie Finder is a web-based application that enables users to search for movies and view relevant details such as release year, ratings, posters, and summaries. The project demonstrates the use of modern front-end technologies and third-party APIs to deliver dynamic content.
 
+Features
 
-## 📌 Project Overview
-The Movie Finder App is a simple web-based application that allows users to sign in and view a list of movies. Each movie is linked to its detailed information page (IMDb). This project is developed using basic web technologies and is suitable for beginners learning HTML and frontend development.
+Search movies by title
 
----
+Display detailed movie information
 
-## 🛠️ Technologies Used
-- HTML5  
-- Inline CSS  
+Responsive and user-friendly interface
 
+Real-time data fetched from a movie database API
+
+Technologies
+
+HTML5
+INLINE CSS
