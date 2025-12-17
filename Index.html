@@ -1,14 +1,33 @@
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
-      rel="stylesheet">
-    <title>Document</title>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <title>Movie Finder</title>
     <link rel="stylesheet" href="styles.css">
+    <style>
+       
+        a.list {
+            display: block;
+            text-decoration: none;
+            color: inherit;
+        }
+        
+      
+        #search-input {
+            background: transparent;
+            border: none;
+            border-bottom: 1px solid #ccc;
+            color: inherit; 
+            padding: 5px;
+            margin-left: 10px;
+            outline: none;
+            width: 120px;
+            font-size: 16px;
+        }
+    </style>
 </head>
 <body>
     
@@ -27,10 +46,12 @@
                 <span class="material-icons">tv </span>
                 <h2>Tv</h2>
             </div>
+            
             <div class="flow">
                 <span class="material-icons">search </span>
-                <h2>search</h2>
+                <input type="text" id="search-input" placeholder="Find movie...">
             </div>
+
             <p>account</p>
             <div class="flow">
                 <span class="material-icons">arrow_drop_down </span>
@@ -38,14 +59,14 @@
             </div>
             <div class="flow">
                 <span class="material-icons">account_circle </span>
-                
             </div>
         </div>
 
         <div class="right">
-            <div class="heading">
+            
+            <div class="heading" id="featured-movie">
                 <div class="head-content">
-                    <h2>Fantasy island</h2>
+                    <h2 class="movie-title">Fantasy island</h2>
                     <div class="rating">
                         <div class="btn"><span class="material-icons">movie_filter</span><span>2021</span></div>
                         <div class="btn"><span class="material-icons star">star</span><span>26.1</span></div>
@@ -54,23 +75,35 @@
                     <a href="#" class="btn btn-main">check more</a>
                 </div>
                 <div class="img-container">
-
-                </div>
+                    </div>
             </div>
+            
             <div class="trending">
                 <h1>Trending Movies <span>see all</span></h1>
 
                 <div class="movie-container">
-                    <div class="list"></div>
-                    <div class="list"></div>
+                    <a href="https://www.bing.com/ck/a?!&&p=5dcf5c37bf013b0151226de0db08bcf5843b3edb3d109aa153b04b7f4c9985f5JmltdHM9MTc2NTkyOTYwMA&ptn=3&ver=2&hsh=4&fclid=0d25af4c-cd65-6807-1267-b91accbe697f&u=a1L3ZpZGVvcy9yaXZlcnZpZXcvcmVsYXRlZHZpZGVvP3E9ZXh0cmFjdGlvbiZtaWQ9NkNENkNFMjAxODJDNzA1NTMyN0M2Q0Q2Q0UyMDE4MkM3MDU1MzI3QyZGT1JNPVZJUkU" 
+                       class="list searchable-item" 
+                       target="_blank"
+                       title="Extraction">
+                       <h3 style="padding:10px;">Extraction</h3> 
+                    </a>
+
+                    <a href="https://www.bing.com/ck/a?!&&p=abb7dbbde5525c97897cc1d0f94bf7323b063d34a300601c16f8d80f2ac65ce3JmltdHM9MTc2NTkyOTYwMA&ptn=3&ver=2&hsh=4&fclid=0d25af4c-cd65-6807-1267-b91accbe697f&psq=sonic+movie&u=a1aHR0cHM6Ly93d3cuanVzdHdhdGNoLmNvbS91cy9tb3ZpZS9zb25pYy10aGUtaGVkZ2Vob2c" 
+                       class="list searchable-item" 
+                       target="_blank"
+                       title="Sonic the Hedgehog">
+                       <h3 style="padding:10px;">Sonic</h3>
+                    </a>
+
                     <div class="list"></div>
                     <div class="list"></div>
                     <div class="list"></div>
                 </div>
             </div>
-            <div class="trending">
-                <h1>Trending Movies <span>see all</span></h1>
 
+            <div class="trending">
+                <h1>TV Shows <span>see all</span></h1>
                 <div class="movie-container tv">
                     <div class="list"></div>
                     <div class="list"></div>
@@ -81,6 +114,44 @@
             </div>
         </div>
     </div>
+
+    <script>
+       
+        const searchBox = document.getElementById('search-input');
+
+       
+        searchBox.addEventListener('keyup', function(e) {
+            
+            
+            const searchText = e.target.value.toLowerCase();
+
+         
+            const featuredMovie = document.getElementById('featured-movie');
+            const featuredTitle = featuredMovie.querySelector('h2').innerText.toLowerCase();
+
+            if (featuredTitle.includes(searchText)) {
+                featuredMovie.style.display = "flex"; 
+            } else {
+                featuredMovie.style.display = "none"; 
+            }
+
+           
+           
+            const listMovies = document.querySelectorAll('.searchable-item');
+
+            listMovies.forEach(function(movie) {
+                
+                const title = movie.querySelector('h3').innerText.toLowerCase();
+
+                if (title.includes(searchText)) {
+                    movie.style.display = "block";
+                } else {
+                    movie.style.display = "none"; 
+                }
+            });
+
+        });
+    </script>
 
 </body>
 </html>
