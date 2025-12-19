@@ -13,10 +13,11 @@
             overflow-x: hidden;
         }
 
-     
+        /* --- SIGN IN PAGE --- */
         #login-page {
             height: 100vh;
-            background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=2025&auto=format&fit=crop');
+            background: linear-gradient(rgba(0,0,0,0.7), rgba(0,0,0,0.7)), 
+                        url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=2025&auto=format&fit=crop');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -25,102 +26,70 @@
             position: fixed;
             width: 100%;
             z-index: 2000;
-            transition: 0.5s;
         }
 
         .login-box {
             background: rgba(0, 0, 0, 0.9);
             padding: 40px;
             border-radius: 10px;
-            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.5);
-            width: 350px;
+            width: 320px;
             text-align: center;
             border: 1px solid #333;
         }
 
-        .login-box h2 { color: tomato; margin-bottom: 25px; text-transform: uppercase; letter-spacing: 2px; }
-        .login-box input { width: 100%; padding: 12px; margin: 10px 0; border: 1px solid #333; border-radius: 4px; background: #222; color: white; box-sizing: border-box; }
+        .login-box h2 { color: tomato; margin-bottom: 20px; text-transform: uppercase; }
+        .login-box input { 
+            width: 100%; padding: 12px; margin: 8px 0; 
+            border: 1px solid #333; border-radius: 4px; 
+            background: #222; color: white; box-sizing: border-box; 
+        }
         
         .signin-btn {
-            width: 100%;
-            padding: 12px;
-            margin-top: 20px;
-            background: tomato;
-            color: white;
-            border: none;
-            border-radius: 4px;
-            cursor: pointer;
-            font-size: 16px;
-            font-weight: bold;
+            width: 100%; padding: 12px; margin-top: 15px;
+            background: tomato; color: white; border: none;
+            border-radius: 4px; cursor: pointer; font-weight: bold;
         }
 
-     
-        #main-content {
-            display: none; 
-            flex-direction: row;
+        /* --- MOVIE DASHBOARD (Hidden by default) --- */
+        #main-dashboard {
+            display: none;
         }
 
         nav {
-            width: 220px;
-            height: 100vh;
-            background-color: #000;
-            padding: 20px;
-            border-right: 1px solid #333;
-            position: fixed;
+            width: 220px; height: 100vh; background-color: #000;
+            padding: 20px; border-right: 1px solid #333; position: fixed;
         }
 
-        nav h1 { color: #e50914; font-size: 1.5rem; text-transform: uppercase; }
+        nav h1 { color: #e50914; font-size: 1.5rem; }
         nav ul { list-style: none; padding: 0; }
         nav li { padding: 12px 0; color: #aaa; cursor: pointer; transition: 0.3s; }
         nav li:hover { color: white; }
 
-        main {
-            margin-left: 260px;
-            padding: 40px;
-            width: 100%;
-        }
-
-        .search-container {
-            margin-bottom: 30px;
-            display: flex;
-            gap: 10px;
-        }
+        main { margin-left: 260px; padding: 40px; width: calc(100% - 260px); }
 
         .search-container input {
-            flex-grow: 1;
-            padding: 12px;
-            border-radius: 5px;
-            border: 1px solid #333;
-            background: #222;
-            color: white;
-            outline: none;
+            width: 100%; padding: 12px; border-radius: 5px;
+            border: 1px solid #333; background: #222; color: white; margin-bottom: 30px;
         }
 
         .movie-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
-            gap: 25px;
+            display: grid; grid-template-columns: repeat(auto-fill, minmax(200px, 1fr)); gap: 20px;
         }
 
         .movie-card {
-            background: #1f1f1f;
-            border-radius: 10px;
-            overflow: hidden;
-            text-decoration: none;
-            color: white;
-            transition: 0.3s;
-            display: block;
+            background: #1f1f1f; border-radius: 10px; overflow: hidden;
+            text-decoration: none; color: white; transition: 0.3s;
         }
 
-        .movie-card:hover { transform: translateY(-10px); }
-        .movie-card img { width: 100%; height: 300px; object-fit: cover; }
-        .movie-info { padding: 15px; text-align: center; font-weight: bold; }
-        .movie-info span { color: #e50914; display: block; font-size: 0.8rem; }
+        .movie-card:hover { transform: translateY(-5px); }
+        .movie-card img { width: 100%; height: 280px; object-fit: cover; }
+        .movie-info { padding: 15px; text-align: center; font-size: 0.9rem; }
+        .movie-info span { color: tomato; display: block; font-size: 0.75rem; }
 
         @media screen and (max-width: 768px) {
-            #main-content { flex-direction: column; }
             nav { width: 100%; height: auto; position: relative; }
-            main { margin-left: 0; padding: 20px; }
+            main { margin-left: 0; width: 100%; padding: 20px; }
+            #main-dashboard { flex-direction: column; }
         }
     </style>
 </head>
@@ -134,66 +103,56 @@
                 <input type="password" placeholder="Password" required>
                 <button type="submit" class="signin-btn">Sign In</button>
             </form>
-            <div style="margin-top: 30px; border-top: 1px solid #333; padding-top: 20px;">
-                <h4 style="color: tomato; margin: 0 0 10px 0; font-size: 14px;">About Us</h4>
-                <p style="color: #bbb; font-size: 11px; line-height: 1.6; margin: 0;">
-                    Movie Finder is the ultimate platform to discover, rate, and review your favorite films.
-                </p>
-            </div>
+            <p style="color: #666; font-size: 12px; margin-top: 20px;">Use any name to login</p>
         </div>
     </div>
 
-    <div id="main-content">
+    <div id="main-dashboard" style="display:none; flex-direction: row;">
         <nav>
             <h1>Movie Finder</h1>
             <ul>
-                <li style="color: white; border-left: 3px solid #e50914; padding-left: 10px;">Home</li>
+                <li style="color: white; border-left: 3px solid tomato; padding-left: 10px;">Home</li>
                 <li>Trending</li>
                 <li>Watchlist</li>
-                <li onclick="location.reload()" style="margin-top: 20px; color: tomato;">Logout</li>
+                <li onclick="location.reload()" style="color: tomato; margin-top: 20px;">Logout</li>
             </ul>
         </nav>
         <main>
-            <div class="search-container">
-                <input type="text" id="movieSearch" placeholder="Search for movies in this list..." onkeyup="filterMovies()">
-            </div>
-
-            <h3>Trending Movies</h3>
+            <input type="text" id="movieSearch" placeholder="Search movies..." onkeyup="filterMovies()">
             <div class="movie-grid" id="movieGrid">
-                <a href="#" class="movie-card" data-name="Extraction"><img src="https://m.media-amazon.com/images/M/MV5BMDJiNzUwYzEtNmQyYy00N2I5LWEwNWItZDBkNDYyNL2VjMDNlXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg" alt="Ex"><div class="movie-info">Extraction <span>Action</span></div></a>
-                <a href="#" class="movie-card" data-name="Joker"><img src="https://m.media-amazon.com/images/M/MV5BNGVjN3RkZGQtMjNkOC00ODAxLTk2YmYtYWU0NWZhNmYxNzkxXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg" alt="Jo"><div class="movie-info">Joker <span>Drama</span></div></a>
-                <a href="#" class="movie-card" data-name="Avengers Endgame"><img src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg" alt="Av"><div class="movie-info">Endgame <span>Sci-Fi</span></div></a>
-                <a href="#" class="movie-card" data-name="Inception"><img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg" alt="In"><div class="movie-info">Inception <span>Sci-Fi</span></div></a>
-                <a href="#" class="movie-card" data-name="The Dark Knight"><img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg" alt="Dk"><div class="movie-info">The Dark Knight <span>Action</span></div></a>
-                <a href="#" class="movie-card" data-name="Interstellar"><img src="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg" alt="Is"><div class="movie-info">Interstellar <span>Sci-Fi</span></div></a>
-                <a href="#" class="movie-card" data-name="Spider-Man No Way Home"><img src="https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_SX300.jpg" alt="Sp"><div class="movie-info">Spider-Man <span>Action</span></div></a>
-                <a href="#" class="movie-card" data-name="The Batman"><img src="https://m.media-amazon.com/images/M/MV5BM2MyNTAwZGMtNTAxNi00MTlkLWFlMWItZTUyYWMwZWMwZTEyXkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg" alt="Bt"><div class="movie-info">The Batman <span>Action</span></div></a>
-                <a href="#" class="movie-card" data-name="John Wick"><img src="https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg" alt="Jw"><div class="movie-info">John Wick <span>Action</span></div></a>
-                <a href="#" class="movie-card" data-name="Avatar"><img src="https://m.media-amazon.com/images/M/MV5BYjhiNjBlOTctYzkwOS00OTFjLTlhZ2ItOTgzN2UxNmJjOTllXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg" alt="Av"><div class="movie-info">Avatar <span>Fantasy</span></div></a>
-                <a href="#" class="movie-card" data-name="The Lion King"><img src="https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg" alt="Lk"><div class="movie-info">The Lion King <span>Adventure</span></div></a>
-                <a href="#" class="movie-card" data-name="Gladiator"><img src="https://m.media-amazon.com/images/M/MV5BMDliOTIzNmUtOTllOC00NWRiLTk5NjctZGI2MjYzNjkwNmZhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg" alt="Gl"><div class="movie-info">Gladiator <span>History</span></div></a>
+                <div class="movie-card" data-name="Extraction"><img src="https://m.media-amazon.com/images/M/MV5BMDJiNzUwYzEtNmQyYy00N2I5LWEwNWItZDBkNDYyNL2VjMDNlXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"><div class="movie-info">Extraction <span>Action</span></div></div>
+                <div class="movie-card" data-name="Joker"><img src="https://m.media-amazon.com/images/M/MV5BNGVjN3RkZGQtMjNkOC00ODAxLTk2YmYtYWU0NWZhNmYxNzkxXkEyXkFqcGdeQXVyMTkxNjUyNQ@@._V1_SX300.jpg"><div class="movie-info">Joker <span>Drama</span></div></div>
+                <div class="movie-card" data-name="Endgame"><img src="https://m.media-amazon.com/images/M/MV5BMTc5MDE2ODcwNV5BMl5BanBnXkFtZTgwMzI2NzQ2NzM@._V1_SX300.jpg"><div class="movie-info">Avengers Endgame <span>Sci-Fi</span></div></div>
+                <div class="movie-card" data-name="Inception"><img src="https://m.media-amazon.com/images/M/MV5BMjAxMzY3NjcxNF5BMl5BanBnXkFtZTcwNTI5OTM0Mw@@._V1_SX300.jpg"><div class="movie-info">Inception <span>Action</span></div></div>
+                <div class="movie-card" data-name="Dark Knight"><img src="https://m.media-amazon.com/images/M/MV5BMTMxNTMwODM0NF5BMl5BanBnXkFtZTcwODAyMTk2Mw@@._V1_SX300.jpg"><div class="movie-info">The Dark Knight <span>Action</span></div></div>
+                <div class="movie-card" data-name="Interstellar"><img src="https://m.media-amazon.com/images/M/MV5BZjdkOTU3MDktN2IxOS00OGEyLWFmMjktY2FiMmZkNWIyODZiXkEyXkFqcGdeQXVyMTMxODk2OTU@._V1_SX300.jpg"><div class="movie-info">Interstellar <span>Sci-Fi</span></div></div>
+                <div class="movie-card" data-name="Spider-Man"><img src="https://m.media-amazon.com/images/M/MV5BZWMyYzFjYTYtNTRjYi00OGExLWE2YzgtOGRmYjAxZTU3NzBiXkEyXkFqcGdeQXVyMzQ0MzA0NTM@._V1_SX300.jpg"><div class="movie-info">No Way Home <span>Action</span></div></div>
+                <div class="movie-card" data-name="The Batman"><img src="https://m.media-amazon.com/images/M/MV5BM2MyNTAwZGMtNTAxNi00MTlkLWFlMWItZTUyYWMwZWMwZTEyXkEyXkFqcGdeQXVyNjY1MTg4Mzc@._V1_SX300.jpg"><div class="movie-info">The Batman <span>Action</span></div></div>
+                <div class="movie-card" data-name="John Wick"><img src="https://m.media-amazon.com/images/M/MV5BMTU2NjA1ODgzMF5BMl5BanBnXkFtZTgwMTM2MTI4MjE@._V1_SX300.jpg"><div class="movie-info">John Wick <span>Action</span></div></div>
+                <div class="movie-card" data-name="Avatar"><img src="https://m.media-amazon.com/images/M/MV5BYjhiNjBlOTctYzkwOS00OTFjLTlhZ2ItOTgzN2UxNmJjOTllXkEyXkFqcGdeQXVyNzkwMjQ5NzM@._V1_SX300.jpg"><div class="movie-info">Avatar <span>Fantasy</span></div></div>
+                <div class="movie-card" data-name="Lion King"><img src="https://m.media-amazon.com/images/M/MV5BMjIwMjE1Nzc4NV5BMl5BanBnXkFtZTgwNDg4OTA1NzM@._V1_SX300.jpg"><div class="movie-info">The Lion King <span>Adventure</span></div></div>
+                <div class="movie-card" data-name="Gladiator"><img src="https://m.media-amazon.com/images/M/MV5BMDliOTIzNmUtOTllOC00NWRiLTk5NjctZGI2MjYzNjkwNmZhXkEyXkFqcGdeQXVyNjU0OTQ0OTY@._V1_SX300.jpg"><div class="movie-info">Gladiator <span>History</span></div></div>
             </div>
         </main>
     </div>
 
     <script>
-       
+        // Switch from Login to Dashboard
         document.getElementById('loginForm').addEventListener('submit', function(e) {
-            e.preventDefault(); // Prevent page refresh
+            e.preventDefault();
             document.getElementById('login-page').style.display = 'none';
-            document.getElementById('main-content').style.display = 'flex';
+            document.getElementById('main-dashboard').style.display = 'flex';
         });
 
-      
+        // Search Logic
         function filterMovies() {
             let input = document.getElementById('movieSearch').value.toLowerCase();
             let cards = document.getElementsByClassName('movie-card');
-            for (let i = 0; i < cards.length; i++) {
-                let name = cards[i].getAttribute('data-name').toLowerCase();
-                cards[i].style.display = name.includes(input) ? "block" : "none";
+            for (let card of cards) {
+                let name = card.getAttribute('data-name').toLowerCase();
+                card.style.display = name.includes(input) ? "block" : "none";
             }
         }
     </script>
 </body>
 </html>
-
