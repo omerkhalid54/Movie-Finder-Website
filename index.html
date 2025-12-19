@@ -13,7 +13,7 @@
             overflow-x: hidden;
         }
 
-        /* --- SIGN IN PAGE STYLES --- */
+     
         #login-page {
             height: 100vh;
             background-image: url('https://images.unsplash.com/photo-1536440136628-849c177e76a1?q=80&w=2025&auto=format&fit=crop');
@@ -54,9 +54,9 @@
             font-weight: bold;
         }
 
-        /* --- MOVIE GRID PAGE STYLES --- */
+     
         #main-content {
-            display: none; /* Hidden until sign-in */
+            display: none; 
             flex-direction: row;
         }
 
@@ -177,14 +177,14 @@
     </div>
 
     <script>
-        // HANDLE LOGIN TRANSITION
+       
         document.getElementById('loginForm').addEventListener('submit', function(e) {
             e.preventDefault(); // Prevent page refresh
             document.getElementById('login-page').style.display = 'none';
             document.getElementById('main-content').style.display = 'flex';
         });
 
-        // HANDLE SEARCH FILTER
+      
         function filterMovies() {
             let input = document.getElementById('movieSearch').value.toLowerCase();
             let cards = document.getElementsByClassName('movie-card');
@@ -196,3 +196,4 @@
     </script>
 </body>
 </html>
+
